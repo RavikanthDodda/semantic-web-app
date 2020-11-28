@@ -1,19 +1,49 @@
-import React from "react";
-import { Dropdown } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
-function DropdownMenu() {
+function DropdownMenu(props) {
+  const [room, setRoom] = useState("");
+  const [floor, setFloor] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(room);
+    props.getArtworks(room);
+  };
+  const updateRoom = (event) => {
+    setRoom(event.target.value);
+  };
+  const updateFloor = (event) => {
+    setFloor(event.target.value);
+  };
+
   return (
-    <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Dropdown Button
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="form.FloorSelect">
+        <Form.Label>Select Floor</Form.Label>
+        <Form.Control as="select" onChangeCapture={updateFloor}>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </Form.Control>
+      </Form.Group>
+      <Form.Group controlId="form.RoomSelect">
+        <Form.Label>Select Room</Form.Label>
+        <Form.Control as="select" onChangeCapture={updateRoom}>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </Form.Control>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 }
 

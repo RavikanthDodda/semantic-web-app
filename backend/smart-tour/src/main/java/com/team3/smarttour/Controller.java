@@ -14,9 +14,10 @@ public class Controller {
 FusekiService fusekiService;
 
     @GetMapping("/artworks/{room}")
-    public List<Artwork> getArtworks(@PathVariable String roomName){
+    public void getArtworks(@PathVariable String room){
             //handle request
-         return fusekiService.getArtworkDetails(roomName);
+        System.out.println(room);
+         fusekiService.getArtworkDetails(room);
 
     }
 

@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Artwork(props) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "15rem", margin: "auto" }}>
       <Card.Img variant="top" src="" />
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Text>{props.text}</Card.Text>
-
-        <Card.Link href="#">View Details</Card.Link>
+        <Card.Title>{props.artwork.title}</Card.Title>
+        <Card.Text>{props.artwork.text}</Card.Text>
+        <Card.Link>
+          <Link
+            to={{
+              pathname: "/details",
+              state: {
+                artwork: props.artwork,
+              },
+            }}
+          >
+            View more
+          </Link>
+        </Card.Link>
       </Card.Body>
     </Card>
   );
