@@ -1,4 +1,4 @@
-# SmartTour
+# Semantic Web Application
 
 ASU SER-531 class project
 
